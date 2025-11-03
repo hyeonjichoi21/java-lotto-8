@@ -8,7 +8,7 @@
 - [ ]  보너스 번호 입력받기(1개)
 - [ ]  각 티켓과 당첨 번호 비교 → 일치 개수/보너스 여부 판정
 - [ ]  등수 집계(1~5등) 및 총 수익 계산
-- [ ]  수익률 계산(소수점 둘째 자리 반올림) 후 출력
+- [ ]  수익률 계산(소수점 첫째 자리까지 반올림) 후 출력
 - [ ]  예외 발생 시 `IllegalArgumentException` 던지고 `"[ERROR]"` 접두사로 메시지 출력 후 해당 입력부터 재진행
 
 ---
@@ -31,6 +31,10 @@
   - 쉼표 기준 6개
   - 모두 정수 & 범위 1~45
   - 중복 없음
+
+- **허용 항목**
+  - 쉼표 뒤에 공백
+
 - **예외 항목**:
   - `[ERROR] 당첨 번호는 1부터 45 사이의 중복되지 않은 6개여야 합니다.`
 
@@ -152,7 +156,7 @@
 - 채점/집계
   - 일치 수/보너스 판별
   - 등수별 개수 집계
-  - 수익률 반올림 검증
+  - 수익률 한 자리 반올림(%.1f%%) 검증
 - 예외 메시지 접두사 `"[ERROR]"` 확인
 
 > UI 테스트는 제외. 난수는 래퍼로 분리해 더블 주입 가능하게.
@@ -162,25 +166,11 @@
 
 ## 커밋 컨벤션 (Angular)
 
-- 초기: `chore: init project structure`, `docs: add feature list`
-- 기능: `feat(domain): add Rank mapping`, `feat(app): generate tickets`
-- 테스트: `test(domain): validate lotto numbers`, `test(service): yield calculation`
-- 출력/리팩토링: `refactor(view): match output spec`, `style: apply java style guide`
-
----
-
-## 실행 방법
-
-- Java 21 확인: `java -version`
-- 테스트:
-  - Mac/Linux: `./gradlew clean test`
-  - Windows: `gradlew.bat clean test`
-- **모든 테스트 통과 → `BUILD SUCCESSFUL` 확인**
-
----
-
-## 메모(개인 기록)
-
-- 이번 주 목표: 함수 분리 → 한 메서드 한 책임, 테스트로 커버리지 확보
-- 배운 점/실패한 시도는 PR 본문에 간단히 정리(테스트로 잡아낸 버그 위주)
+- 리드미: `docs(readme): 리드미 작성 및 기능 목록 추가`
+- 초기: `chore: 프로젝트 구조 초기 설정`
+- 기능: `feat(domain): 새로운 기능 추가`
+- 테스트: `test(service): 테스트 코드 추가/수정`
+- 오류 수정: `fix(file): 오류 확인 후 버그 수정`
+- 출력/리팩토링: `refactor(view): 기능 변화 없이 코드 구조 개선` 
+- 코드 스타일: `style: 자바 스타일 가이드 적용`
 
