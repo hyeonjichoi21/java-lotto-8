@@ -1,6 +1,8 @@
 package lotto;
 
 import lotto.util.ErrorMessage;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -10,9 +12,10 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        List<Integer> sorted = new ArrayList<>(numbers);
         // 필드 추가 없이, 전달받은 리스트를 정렬만 수행
-        Collections.sort(numbers);
-        this.numbers = numbers;
+        Collections.sort(sorted);
+        this.numbers = sorted;
     }
 
     private void validate(List<Integer> numbers) {
