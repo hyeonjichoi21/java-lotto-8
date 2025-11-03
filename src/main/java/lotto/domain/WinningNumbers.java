@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.util.ErrorMessage;
+
 import java.util.*;
 
 public class WinningNumbers {
@@ -19,24 +21,24 @@ public class WinningNumbers {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != SIZE) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_WINNING_NUMBERS);
         }
         if (new HashSet<>(numbers).size() != SIZE) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 중복될 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER);
         }
         for (int n : numbers) {
             if (n < MIN || n > MAX) {
-                throw new IllegalArgumentException("[ERROR] 당첨 번호는 1부터 45 사이여야 합니다.");
+                throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE);
             }
         }
     }
 
     private void validateBonus(int b) {
         if (b < MIN || b > MAX) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_BONUS_RANGE);
         }
         if (winning.contains(b)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_BONUS);
         }
     }
 
