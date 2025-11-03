@@ -49,10 +49,7 @@ public class LottoController {
         }
     }
 
-    /**
-     * 금액은 한 번만 읽고, 잘못된 경우 [ERROR] 출력 후 IllegalArgumentException 전파
-     * -> ApplicationTest의 runException("1000j")와 호환되도록 타임아웃 방지
-     */
+    // 구입 금액을 파싱하고 유효성 검증에 실패하면 [ERROR] 출력 후 IllegalArgumentException을 던진다.
     private long readAmount() {
         try {
             String raw = in.readAmount().trim();
@@ -68,10 +65,7 @@ public class LottoController {
         }
     }
 
-    /**
-     * 당첨 번호와 보너스도 각각 한 번만 읽고, 검증 실패 시 [ERROR] 출력 후 예외 전파
-     * (정상 시나리오에서는 유효 입력이 들어오므로 그대로 통과)
-     */
+    // 당첨 번호와 보너스 번호를 파싱하고, 검증 실패 시 [ERROR] 출력 후 IllegalArgumentException을 던진다.
     private WinningNumbers readWinningOnce() {
         String rawWinning = in.readWinning();
         String rawBonus = in.readBonus();
