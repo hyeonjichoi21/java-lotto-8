@@ -17,6 +17,6 @@ public class OutputView {
         System.out.printf("5개 일치 (1,500,000원) - %d개%n", counts.getOrDefault(Rank.THIRD, 0L));
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개%n", counts.getOrDefault(Rank.SECOND, 0L));
         System.out.printf("6개 일치 (2,000,000,000원) - %d개%n", counts.getOrDefault(Rank.FIRST, 0L));
-        System.out.printf("총 수익률은 %.1f%%입니다.%n", Math.round(yieldPercent * 10) / 10.0);
+        System.out.printf("총 수익률은 %.1f%%입니다.%n", yieldPercent);
     }
 }

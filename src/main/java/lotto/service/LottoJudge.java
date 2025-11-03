@@ -3,6 +3,7 @@ package lotto.service;
 import lotto.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.WinningNumbers;
+import lotto.util.ErrorMessage;
 
 import java.util.*;
 
@@ -28,8 +29,10 @@ public class LottoJudge {
 
     public double yieldPercent(long totalPrize, long paid) {
         if (paid <= 0 || paid % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위의 양수여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_AMOUNT);
         }
-        return (totalPrize * 100.0) / paid;
+        double percent = (totalPrize * 100.0) / paid;
+        return Math.round(percent * 10) / 10.0; // 한 자리 반올림
     }
+
 }
